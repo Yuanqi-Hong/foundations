@@ -1,3 +1,3 @@
 # foundations
 
-Stuff from Foundations 2018
+Assignments and classworks from Foundations of Computing (Columbia Journalism School, 2018)
