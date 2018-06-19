@@ -1,9 +1,8 @@
 # This is the saved terminal inputs and outputs for homework 9 part 1.
-# The IP of my server has been replaced with MY_IP
 
 
 
-dyn-160-39-146-88:~ Edward$ ssh -i ~/.ssh/foundations_key root@MY_IP
+dyn-160-39-146-88:~ Edward$ ssh -i ~/.ssh/foundations_key root@204.48.17.124
 Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.4.0-127-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
@@ -23,82 +22,16 @@ Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.4.0-127-generic x86_64)
 
 
 *** System restart required ***
-server root@foundations:~$ tzselect
-Please identify a location so that time zone rules can be set correctly.
-Please select a continent, ocean, "coord", or "TZ".
- 1) Africa
- 2) Americas
- 3) Antarctica
- 4) Asia
- 5) Atlantic Ocean
- 6) Australia
- 7) Europe
- 8) Indian Ocean
- 9) Pacific Ocean
-10) coord - I want to use geographical coordinates.
-11) TZ - I want to specify the time zone using the Posix TZ format.
-#? 2
-Please select a country whose clocks agree with yours.
- 1) Anguilla		  19) Dominican Republic    37) Peru
- 2) Antigua & Barbuda	  20) Ecuador		    38) Puerto Rico
- 3) Argentina		  21) El Salvador	    39) St Barthelemy
- 4) Aruba		  22) French Guiana	    40) St Kitts & Nevis
- 5) Bahamas		  23) Greenland		    41) St Lucia
- 6) Barbados		  24) Grenada		    42) St Maarten (Dutch)
- 7) Belize		  25) Guadeloupe	    43) St Martin (French)
- 8) Bolivia		  26) Guatemala		    44) St Pierre & Miquelon
- 9) Brazil		  27) Guyana		    45) St Vincent
-10) Canada		  28) Haiti		    46) Suriname
-11) Caribbean NL	  29) Honduras		    47) Trinidad & Tobago
-12) Cayman Islands	  30) Jamaica		    48) Turks & Caicos Is
-13) Chile		  31) Martinique	    49) United States
-14) Colombia		  32) Mexico		    50) Uruguay
-15) Costa Rica		  33) Montserrat	    51) Venezuela
-16) Cuba		  34) Nicaragua		    52) Virgin Islands (UK)
-17) Curaçao		  35) Panama		    53) Virgin Islands (US)
-18) Dominica		  36) Paraguay
-#? 49
-Please select one of the following time zone regions.
- 1) Eastern (most areas)	      16) Central - ND (Morton rural)
- 2) Eastern - MI (most areas)	      17) Central - ND (Mercer)
- 3) Eastern - KY (Louisville area)    18) Mountain (most areas)
- 4) Eastern - KY (Wayne)	      19) Mountain - ID (south); OR (east)
- 5) Eastern - IN (most areas)	      20) MST - Arizona (except Navajo)
- 6) Eastern - IN (Da, Du, K, Mn)      21) Pacific
- 7) Eastern - IN (Pulaski)	      22) Alaska (most areas)
- 8) Eastern - IN (Crawford)	      23) Alaska - Juneau area
- 9) Eastern - IN (Pike)		      24) Alaska - Sitka area
-10) Eastern - IN (Switzerland)	      25) Alaska - Annette Island
-11) Central (most areas)	      26) Alaska - Yakutat
-12) Central - IN (Perry)	      27) Alaska (west)
-13) Central - IN (Starke)	      28) Aleutian Islands
-14) Central - MI (Wisconsin border)   29) Hawaii
-15) Central - ND (Oliver)
-#? 1
+Last login: Tue Jun 19 09:39:13 2018 from 160.39.146.88
+server root@foundations:~$ dpkg-reconfigure tzdata
 
-The following information has been given:
+Current default time zone: 'America/New_York'
+Local time is now:      Tue Jun 19 10:05:29 EDT 2018.
+Universal Time is now:  Tue Jun 19 14:05:29 UTC 2018.
 
-	United States
-	Eastern (most areas)
-
-Therefore TZ='America/New_York' will be used.
-Local time is now:	Mon Jun 18 21:42:12 EDT 2018.
-Universal Time is now:	Tue Jun 19 01:42:12 UTC 2018.
-Is the above information OK?
-1) Yes
-2) No
-#? 1
-
-You can make this change permanent for yourself by appending the line
-	TZ='America/New_York'; export TZ
-to the file '.profile' in your home directory; then log out and log in again.
-
-Here is that TZ value again, this time on standard output so that you
-can use the /usr/bin/tzselect command in shell scripts:
-America/New_York
 server root@foundations:~$ exit
 logout
-Connection to MY_IP closed.
+Connection to 204.48.17.124 closed.
 
 
 
@@ -106,7 +39,7 @@ Connection to MY_IP closed.
 
 
 
-dyn-160-39-146-88:~ Edward$ scp -i ~/.ssh/foundations_key ~/Downloads/09-homework-part1.py root@MY_IP:
+dyn-160-39-146-88:~ Edward$ scp -i ~/.ssh/foundations_key ~/Downloads/09-homework-part1.py root@204.48.17.124:
 09-homework-part1.py                          100% 2444   559.5KB/s   00:00
 
 
@@ -115,7 +48,7 @@ dyn-160-39-146-88:~ Edward$ scp -i ~/.ssh/foundations_key ~/Downloads/09-homewor
 
 
     
-dyn-160-39-146-88:~ Edward$ ssh -i ~/.ssh/foundations_key root@MY_IP
+dyn-160-39-146-88:~ Edward$ ssh -i ~/.ssh/foundations_key root@204.48.17.124
 Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.4.0-127-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
@@ -132,8 +65,23 @@ Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.4.0-127-generic x86_64)
 *** System restart required ***
 Last login: Tue Jun 19 01:41:55 2018 from 160.39.146.88
 server root@foundations:~$ crontab -e
+
+
+
+# THE CODE WRITTEN IN CRON
+
+
+
+0 8 * * * python3 09-homework-part1.py
+
+
+
+# EXIT
+
+
+
 crontab: installing new crontab
 server root@foundations:~$ exit
 logout
-Connection to MY_IP closed.
+Connection to 204.48.17.124 closed.
 dyn-160-39-146-88:~ Edward$ 
