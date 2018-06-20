@@ -1,4 +1,5 @@
 # Generating auto-emails on China-related news from Google News
+# BONUS: presenting the content not as an CSV attachment but as the body of email
 
 from bs4 import BeautifulSoup
 import requests
@@ -36,16 +37,13 @@ for article in articles:
     
 df = pd.DataFrame(briefing)
 right_now = datetime.datetime.now()
-date_string_filename = right_now.strftime("%Y-%b-%d_%-I%p")
-df.to_csv('China_news_briefing_{}.csv'.format(date_string_filename), index=False)
 date_string_mail = right_now.strftime("%-I %p")
+pd.set_option('display.max_colwidth', -1)
 
 requests.post(
         "https://api.mailgun.net/v3/MY_SANDBOX_DOMAIN/messages",
         auth=("api", "MY_API_KEY"),
-        files=[("attachment", open('China_news_briefing_{}.csv'.format(date_string_filename)))],
         data={"from": "Edward Hong <mailgun@MY_SANDBOX_DOMAIN>",
               "to": ["Edward.YSHF@gmail.com"],
               "subject": "{} China News Briefing".format(date_string_mail),
-              "text": "See attachment to learn what's new about China.",
-              "html": '<html>Inline image here: <img src="cid:test.jpg"></html>'})
+              "html": df.to_html()})
