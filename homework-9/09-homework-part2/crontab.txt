@@ -1,0 +1,16 @@
+# This is the terminal inputs for homework 9 part 2.
+
+# Since the logic is similar to that in homework 9 part 1, in this txt file I only listed the commands (i.e. inputs) used to get the job done for simplicity.
+
+# Since we already set the timezone correctly in part 1, we won't have to do it again here.
+
+# SENDING .PY FILE TO SERVER
+scp -i ~/.ssh/foundations_key ~/Downloads/09-homework-part2.py root@MY_IP:
+
+# CONNECTING TO SERVER
+ssh -i ~/.ssh/foundations_key root@MY_IP
+
+# GET SERVER TO RUN THE FILE EVERY 6 HOURS
+crontab -e
+0 0,6,12,18 * * * python3 09-homework-part2.py
+control + X -> Y -> return
